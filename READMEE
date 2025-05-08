@@ -1,0 +1,112 @@
+
+Contact Registry Web App & APIs
+A Java web application to manage contact details with CRUD operations, admin dashboard, and reporting capabilities.
+Project Overview
+This application catalogs contact details including full names, phone numbers, email addresses, ID numbers, date of birth, gender, and county of residence.
+# Contact Registry App
+
+This is a simple Java web application using Servlets, JSP, and MySQL to manage a contact registry.
+
+## Features
+- Add, edit, delete contacts
+- View recent contacts
+- Dashboard with gender and county statistics
+
+## Technologies
+- Java Servlet & JSP
+- MySQL 8.3.0
+- JDBC (DAO Pattern)
+- JasperReports (for PDF generation)
+
+## How to Run
+1. Import the project into NetBeans.
+2. Configure the MySQL database connection in `DataBaseConnection.java`.
+3. Run on Tomcat.
+4. Access via `http://localhost:8080/ContactRegistryApp/`.
+
+##[Database Setup]
+Please edit the Database Connection file with the respective:
+1. useraname
+2. password
+
+##API 
+Base URL
+http://localhost:8080/ContactRegistryApp/api/
+API Endpoints
+Contacts API
+1. Get All Contacts
+
+URL: /contacts
+Method: GET
+Description: Retrieves a list of all contacts
+Response:
+json[
+  {
+    "id": 1,
+    "fullName": "John Doe",
+    "phoneNumber": "+254712345678",
+    "email": "john.doe@example.com",
+    "idNumber": "12345678",
+    "dateOfBirth": "1990-01-15",
+    "gender": "Male",
+    "countyOfResidence": "Nairobi",
+    "createdAt": "2023-05-07T10:30:00.000Z",
+    "updatedAt": "2023-05-07T10:30:00.000Z"
+  },
+  ...etc
+]
+
+
+2. Get Contact by ID
+
+URL: /contacts/{id}
+Method: GET
+Description: Retrieves a specific contact by ID
+Response:
+json{
+  "id": 1,
+  "fullName": "John Doe",
+  "phoneNumber": "+254712345678",
+  "email": "john.doe@example.com",
+  "idNumber": "12345678",
+  "dateOfBirth": "1990-01-15",
+  "gender": "Male",
+  "countyOfResidence": "Nairobi",
+  "createdAt": "2023-05-07T10:30:00.000Z",
+  "updatedAt": "2023-05-07T10:30:00.000Z"
+}
+
+
+3. Get Contacts by County
+
+URL: /contacts/county/{countyName}
+Method: GET
+Description: Retrieves contacts filtered by county of residence
+Response: Array of contact objects
+
+4. Get Recent Contacts
+
+URL: /contacts/recent
+Method: GET
+Description: Retrieves the 5 most recently added contacts
+Response: Array of contact objects
+
+5. Get All Counties
+
+URL: /contacts/counties
+Method: GET
+Description: Retrieves a list of all unique counties in the database
+Response: Array of county names
+
+6. Get Gender Statistics
+
+URL: /contacts/stats/gender
+Method: GET
+Description: Retrieves statistics about gender distribution
+
+
+
+7. Get County Statistics
+
+URL: /contacts/stats/county
+Method: GET

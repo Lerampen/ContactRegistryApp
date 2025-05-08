@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="contactreport" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="cc286eff-0315-4320-83e9-c271c3164a24">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="CountyFilter" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+    full_name,
+    phone,
+    email,
+    id_number,
+    date_of_birth,
+    gender,
+    county_residence
+FROM
+    contacts
+WHERE
+    $P{CountyFilter} = 'All Counties' OR county_residence = $P{CountyFilter}]]>
+	</queryString>
+	<field name="full_name" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="phone" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="email" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_number" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="date_of_birth" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="gender" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="county_residence" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<group name="county_residence">
+		<groupExpression><![CDATA[$F{county_residence}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="100" y="26" width="309" height="38" uuid="388d8082-b6bd-4c79-9d34-4051f7fba557"/>
+				<textElement>
+					<font size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CONTACT DETAILS REPORT]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="22" width="81" height="20" uuid="4eae14c2-150b-477b-845e-81c6773b019d"/>
+				<text><![CDATA[full_name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="81" y="22" width="62" height="20" uuid="c419200c-14ea-42e2-8237-5b5799ffa8d8"/>
+				<text><![CDATA[phone]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="143" y="22" width="66" height="20" uuid="40f3f5a7-d586-4dee-bf28-de731fe84c92"/>
+				<text><![CDATA[email]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="209" y="22" width="100" height="20" uuid="a289b834-8036-4f53-bce5-c09a9b8b6889"/>
+				<text><![CDATA[id_number]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="309" y="22" width="100" height="20" uuid="9063eccc-bad0-4738-93d5-5cbcd0975357"/>
+				<text><![CDATA[date_of_birth]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="409" y="22" width="50" height="20" uuid="514bb441-3f13-4629-832d-61913b42b830"/>
+				<text><![CDATA[gender]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="459" y="22" width="100" height="20" uuid="1fdfe4df-4b42-45f1-b7f2-1daf2e485a15"/>
+				<text><![CDATA[county_residence]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="16" width="81" height="20" uuid="f3e4fee7-b70d-4cee-9c7c-a5a2fb1efb14"/>
+				<textFieldExpression><![CDATA[$F{full_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="81" y="16" width="77" height="20" uuid="4cf69ebf-77f6-404b-9806-d7fa08ec0fe3"/>
+				<textFieldExpression><![CDATA[$F{phone}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="158" y="16" width="80" height="20" uuid="14f98c8e-fd28-4b83-8fd4-a2c572d49122"/>
+				<textFieldExpression><![CDATA[$F{email}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="238" y="16" width="100" height="20" uuid="5dd47890-c4c0-4209-a92b-e6075f9c2958"/>
+				<textFieldExpression><![CDATA[$F{id_number}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="338" y="16" width="100" height="20" uuid="38243090-0e43-4701-ac93-d155a366345b"/>
+				<textFieldExpression><![CDATA[$F{date_of_birth}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="438" y="16" width="44" height="20" uuid="dc64f255-0113-4b66-982b-65b5cd8ce0ed"/>
+				<textFieldExpression><![CDATA[$F{gender}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="482" y="16" width="73" height="20" uuid="0785c6c7-78ab-4dc9-bd73-c1a51f0c204f"/>
+				<textFieldExpression><![CDATA[$F{county_residence}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
